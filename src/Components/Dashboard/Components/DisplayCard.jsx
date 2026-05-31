@@ -1,37 +1,59 @@
 import "../index.css";
 
-function Attribute( {data} ) {
+// DisplayCard.jsx
+function Attribute({ data }) {
+  // eslint-disable-next-line no-unused-vars
+  const isIncome = data.type === "income"; 
+
   return (
     <div
+      className="transaction-attribute"
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "0.5rem",
-        padding: "1.2rem",
-        borderRadius: "25px",
-        margin: "1rem",
-        marginBottom: "2rem",
-        scrollSnapMarginBottom: "1rem",
-        color: "white",
+        gap: "0.4rem",
+        padding: "1rem 1.2rem",
+        borderRadius: "8px", 
+        margin: "0.8rem 1rem",
+        color: "#f8fafc",
         textAlign: "left",
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
       }}
     >
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          fontWeight: "bold",
+          alignItems: "center",
         }}
       >
-        <span>{data.purpose || data.source}</span>
-        <span>${data.amount}</span>
+        {/* Added classes, removed inline fontSize */}
+        <span className="attr-title" style={{ fontWeight: "600" }}>
+          {data.purpose || data.source}
+        </span>
+        <span className="attr-amount" style={{ fontWeight: "bold" }}>
+          ${data.amount}
+        </span>
       </div>
 
-      <div style={{ fontSize: "0.85rem", opacity: 0.8 }}>
-        <span>{data.category || data.date}</span>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.2rem",
+        }}
+      >
+        {/* Added classes, removed inline fontSize */}
+        <span className="attr-category" style={{ color: "#94a3b8" }}>
+          {data.category || data.date}
+        </span>
+
         {data.description && (
-          <p style={{ margin: "0.5rem 0 0 0" }}>{data.description}</p>
+          <p
+            className="attr-desc"
+            style={{ margin: "0.2rem 0 0 0", color: "#cbd5e1" }}
+          >
+            {data.description}
+          </p>
         )}
       </div>
     </div>

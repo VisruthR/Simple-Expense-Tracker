@@ -106,7 +106,49 @@ body {
 }
 
 .Button.inputCard:active {
-  transform: translate(5% , 18%);
+  transform: translate(5%, 18%);
+}
+
+.transaction-attribute {
+  font-size: 0.9em;
+  color: #cbd5e1;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.transaction-attribute:hover {
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.attr-title, .attr-amount {
+  font-size: 0.95rem;
+  transition: font-size 0.2s ease-in-out;
+}
+
+.attr-category {
+  font-size: 0.75rem;
+  transition: font-size 0.2s ease-in-out;
+}
+
+.attr-desc {
+  font-size: 0.85rem;
+  transition: font-size 0.2s ease-in-out;
+}
+
+/* --- 1.1x Bigger on Hover --- */
+.transaction-attribute:hover .attr-title,
+.transaction-attribute:hover .attr-amount {
+  font-size: 1.05rem;
+}
+
+.transaction-attribute:hover .attr-category {
+  font-size: 0.83rem;
+}
+
+.transaction-attribute:hover .attr-desc {
+  font-size: 0.94rem;
 }
 
 @keyframes fadeIn {
