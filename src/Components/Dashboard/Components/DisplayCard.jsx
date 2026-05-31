@@ -1,6 +1,5 @@
 import "../index.css";
 
-// DisplayCard.jsx
 function Attribute({ data }) {
   const isIncome = data.type === "income"; 
 
