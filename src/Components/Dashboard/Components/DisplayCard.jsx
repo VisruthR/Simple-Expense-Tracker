@@ -75,7 +75,7 @@ export default function DisplayCard( { transactions = [] } ) {
         flexDirection: "column",
       }}
     >
-      <h2 style={{ margin: "1rem" }}>Screen</h2>
+      <h2 style={{ margin: "0.1rem" }}>Screen</h2>
       <div
         style={{
           flex: 1,
