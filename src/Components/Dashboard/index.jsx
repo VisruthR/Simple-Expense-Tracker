@@ -16,7 +16,15 @@ export default function Dashboard({ user }) {
     localStorage.setItem("transactions", JSON.stringify(transactions));
    }, [transactions] );
   
-
+  
+  const totalIncome = transactions
+    .filter((item) => item.type === "income")
+    .reduce((total, item) => total + parseFloat(item.amount), 0);
+  
+  const totalExpense = transactions
+    .filter((item) => item.type === "expense")
+    .reduce((total, item) => total + parseFloat(item.amount), 0);
+  
   const handleTransaction = (newTransaction) => {
     setTransactions((prevTransactions) => [
       ...prevTransactions,
@@ -61,7 +69,7 @@ export default function Dashboard({ user }) {
         }}
       >
         <DisplayCard transactions={transactions} />
-        <ChartCard />
+        <ChartCard totalIncome={totalIncome} totalExpense={totalExpense} />
       </div>
       <InputCard onAddTransaction={handleTransaction} />
     </div>
