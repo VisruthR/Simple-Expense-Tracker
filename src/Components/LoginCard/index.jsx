@@ -4,7 +4,6 @@ import "./index.css";
 export default function LoginCard({ LoginHandler }) {
   const [name, setName] = useState("");
   const [submitted, setsubmitted] = useState(false);
-  const [loginDisplay, setLoginDisplay] = useState(true);
 
   const localSubmitHandler = (e) => {
     e.preventDefault();
@@ -14,7 +13,6 @@ export default function LoginCard({ LoginHandler }) {
 
       setTimeout(() => {
         LoginHandler(name);
-        setLoginDisplay(false);
       }, 950);
     }
   };
@@ -30,7 +28,6 @@ export default function LoginCard({ LoginHandler }) {
         width: "300px",
         margin: "10rem auto 2rem auto",
         transition: "opacity 0.5s ease-out",
-        display: loginDisplay ? "block" : "none",
       }}
     >
       <form onSubmit={localSubmitHandler}>
