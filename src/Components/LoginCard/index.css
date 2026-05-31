@@ -1,0 +1,50 @@
+.Login-Div {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.Login-Div.fade-out {
+  animation: fadeOut 1s ease-in-out;
+}
+
+.Button {
+  width: 100%;
+  height: 100%;
+  background-color: #29bbf0;
+  color: #0a1128;
+  transition: all 0.3s ease-in-out;
+}
+
+.Button:hover {
+  box-shadow:
+    0 0 5px #29bbf0,
+    0 0 15px #29bbf0;
+  background-color: #40c6f5;
+}
+
+.Button:active {
+  background-color: #1ba5d7;
+  transform: translateX(5%);
+  width: 90%;
+  height: 90%;
+  box-shadow:
+    0 0 10px #1e9ac8,
+    0 0 20px #1e9ac8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

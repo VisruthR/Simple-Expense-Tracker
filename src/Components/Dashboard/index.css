@@ -1,0 +1,119 @@
+:root {
+  --bg-page: #091126;
+  --card-base-1: #203462;
+  --card-base-2: #1a294f;
+  --card-edge: rgba(110, 145, 255, 0.16);
+  --card-glow: rgba(111, 147, 255, 0.14);
+  --card-shadow: rgba(0, 0, 0, 0.42);
+  --card-highlight: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  background: var(--bg-page);
+}
+
+.card {
+  position: relative;
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(120, 160, 255, 0.12),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 255, 255, 0.03),
+      transparent 45%
+    ),
+    linear-gradient(180deg, var(--card-base-1) 0%, var(--card-base-2) 100%);
+  border: 1px solid var(--card-edge);
+  box-shadow:
+    inset 0 1px 0 var(--card-highlight),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 12px 30px var(--card-shadow);
+  overflow: hidden;
+}
+
+/* soft glassy texture overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 35%),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.04),
+      transparent 25%
+    ),
+    radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.1), transparent 30%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* subtle grain/noise texture */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 8px 8px;
+  mix-blend-mode: overlay;
+}
+
+.card.dark {
+  --card-base-1: #1c2c54;
+  --card-base-2: #15223f;
+}
+
+.dashboard {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.Button {
+  width: 100%;
+  height: 100%;
+  background-color: #29bbf0;
+  color: #0a1128;
+  transition: all 0.3s ease-in-out;
+}
+
+.Button:hover {
+  box-shadow:
+    0 0 5px #29bbf0,
+    0 0 15px #29bbf0;
+  background-color: #40c6f5;
+}
+
+.Button:active {
+  background-color: #1ba5d7;
+  width: 90%;
+  height: 90%;
+  box-shadow:
+    0 0 10px #1e9ac8,
+    0 0 20px #1e9ac8;
+}
+
+.Button.inputCard {
+  transform: translateY(18%);
+}
+
+.Button.inputCard:active {
+  transform: translate(5% , 18%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
