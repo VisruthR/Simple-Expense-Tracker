@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import LoginCard from "./Components/LoginCard";
 import Dashboard from "./Components/Dashboard";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState(""); //State for user name
+  const [user, setUser] = useState(() => {
+    const savedName = localStorage.getItem("username");
+    return savedName ? savedName : "";
+  }); //State for user name
+
+  useEffect(() => {
+    localStorage.setItem("username", user);
+  }, [user]);
 
   const LoginHandler = (userName) => {
     const NAME = userName.trim();
@@ -15,7 +22,7 @@ function App() {
   return (
     <>
       <Header />
-      <LoginCard LoginHandler={LoginHandler} />
+      {!user && <LoginCard LoginHandler={LoginHandler} />}
       {user && <Dashboard user={user} />}
 
       <p
