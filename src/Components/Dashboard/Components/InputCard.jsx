@@ -61,7 +61,7 @@ function TransactionForm({
           type="number"
           id="amount"
           name="amount"
-          min="0"
+          min="0.01"
           step="0.01"
           placeholder="0.00"
           required

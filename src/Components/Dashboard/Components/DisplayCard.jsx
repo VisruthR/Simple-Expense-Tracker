@@ -33,7 +33,7 @@ function Attribute({ data }) {
           fontWeight: "bold",
           color: isIncome ? "#22c5c2" : "#ef449c",
         }}>
-          { isIncome ? "+" : "-" }${data.amount}
+          {isIncome ? "+" : "-"}${parseFloat(data.amount)}
         </span>
       </div>
 
