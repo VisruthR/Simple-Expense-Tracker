@@ -2,7 +2,6 @@ import "../index.css";
 
 // DisplayCard.jsx
 function Attribute({ data }) {
-  // eslint-disable-next-line no-unused-vars
   const isIncome = data.type === "income"; 
 
   return (
