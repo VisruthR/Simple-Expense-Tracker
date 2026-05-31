@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "../index.css";
 
-function Expense({
+function TransactionForm({
+  isExpense,
   groupStyle,
   labelStyle,
   baseInputStyle,
@@ -11,161 +12,8 @@ function Expense({
   const [formdata, setformdata] = useState({
     amount: "",
     purpose: "",
-    category: "",
-    description: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformdata((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(`Submitting Expense:`, formdata);
-
-    onSubmitData({
-      ...formdata,
-      id: crypto.randomUUID(),
-      type: "expense",
-    });
-
-    // Reset form after submission
-    setformdata({
-      amount: "",
-      purpose: "",
-      category: "",
-      description: "",
-    });
-  };
-
-  return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 2fr 1.5fr",
-        gap: "0.8rem",
-        padding: "0.5rem 1rem",
-      }}
-    >
-      {/* ROW 1 */}
-      <div style={groupStyle}>
-        <label htmlFor="amount" style={labelStyle}>
-          Amount:
-        </label>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          min="0"
-          step="0.01"
-          placeholder="0.00"
-          required
-          style={inputStyle}
-          value={formdata.amount}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div style={groupStyle}>
-        <label htmlFor="purpose" style={labelStyle}>
-          What is this for?
-        </label>
-        <input
-          type="text"
-          id="purpose"
-          name="purpose"
-          placeholder="e.g., Client Lunch"
-          required
-          style={inputStyle}
-          value={formdata.purpose}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div style={groupStyle}>
-        <label htmlFor="category" style={labelStyle}>
-          Category:
-        </label>
-        <select
-          id="category"
-          name="category"
-          required
-          style={inputStyle}
-          value={formdata.category}
-          onChange={handleChange}
-        >
-          <option value="" style={{ color: "black" }}>
-            -- Select Category --
-          </option>
-          <option value="food" style={{ color: "black" }}>
-            Food & Beverage
-          </option>
-          <option value="travel" style={{ color: "black" }}>
-            Travel
-          </option>
-          <option value="software" style={{ color: "black" }}>
-            Software
-          </option>
-          <option value="supplies" style={{ color: "black" }}>
-            Supplies
-          </option>
-          <option value="other" style={{ color: "black" }}>
-            Other
-          </option>
-        </select>
-      </div>
-
-      {/* ROW 2 */}
-      <div style={{ ...groupStyle, gridColumn: "1 / span 2" }}>
-        <label htmlFor="description" style={labelStyle}>
-          Description:
-        </label>
-        <textarea
-          id="description"
-          name="description"
-          placeholder="Add details..."
-          style={{
-            ...baseInputStyle,
-            minHeight: "42px",
-            resize: "vertical",
-          }}
-          value={formdata.description}
-          onChange={handleChange}
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        className="Button inputCard"
-        style={{
-          gridColumn: "3",
-          alignSelf: "center",
-          height: "50px",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-          fontWeight: "bold",
-          fontSize: "0.95rem",
-        }}
-      >
-        Add Expense
-      </button>
-    </form>
-  );
-}
-function Income({
-  groupStyle,
-  labelStyle,
-  baseInputStyle,
-  inputStyle,
-  onSubmitData,
-}) {
-  const [formdata, setformdata] = useState({
-    amount: "",
     source: "",
+    category: "",
     date: "",
     description: "",
   });
@@ -178,17 +26,17 @@ function Income({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(`Submitting Income:`, formdata);
-
     onSubmitData({
       ...formdata,
       id: crypto.randomUUID(),
-      type: "income",
+      type: isExpense ? "expense" : "income",
     });
 
     setformdata({
       amount: "",
+      purpose: "",
       source: "",
+      category: "",
       date: "",
       description: "",
     });
@@ -204,7 +52,7 @@ function Income({
         padding: "0.5rem 1rem",
       }}
     >
-      {/* ROW 1 */}
+      {/* ROW 1, COLUMN 1: Amount (Shared) */}
       <div style={groupStyle}>
         <label htmlFor="amount" style={labelStyle}>
           Amount:
@@ -223,55 +71,98 @@ function Income({
         />
       </div>
 
+      {/* ROW 1, COLUMN 2: Purpose (Expense) OR Source (Income) */}
       <div style={groupStyle}>
-        <label htmlFor="source" style={labelStyle}>
-          Source of income:
+        <label style={labelStyle}>
+          {isExpense ? "What is this for?" : "Source of income:"}
         </label>
-        <select
-          id="source"
-          name="source"
-          required
-          style={inputStyle}
-          value={formdata.source}
-          onChange={handleChange}
-        >
-          <option value="" style={{ color: "black" }}>
-            -- Select Source --
-          </option>
-          <option value="work" style={{ color: "black" }}>
-            Work
-          </option>
-          <option value="investment" style={{ color: "black" }}>
-            Investment
-          </option>
-          <option value="Freelance" style={{ color: "black" }}>
-            Freelance
-          </option>
-          <option value="Gifts" style={{ color: "black" }}>
-            Gift
-          </option>
-          <option value="other" style={{ color: "black" }}>
-            Other
-          </option>
-        </select>
+        {isExpense ? (
+          <input
+            type="text"
+            id="purpose"
+            name="purpose"
+            placeholder="e.g., Client Lunch"
+            required
+            style={inputStyle}
+            value={formdata.purpose}
+            onChange={handleChange}
+          />
+        ) : (
+          <select
+            id="source"
+            name="source"
+            required
+            style={inputStyle}
+            value={formdata.source}
+            onChange={handleChange}
+          >
+            <option value="" style={{ color: "black" }}>
+              -- Select Source --
+            </option>
+            <option value="work" style={{ color: "black", backgroundColor: "lightgray" }}>
+              Work
+            </option>
+            <option value="investment" style={{ color: "black", backgroundColor: "lightgray" }}>
+              Investment
+            </option>
+            <option value="freelance" style={{ color: "black", backgroundColor: "lightgray" }}>
+              Freelance
+            </option>
+            <option value="gifts" style={{ color: "black", backgroundColor: "lightgray" }}>
+              Gift
+            </option>
+            <option value="other" style={{ color: "black", backgroundColor: "lightgray" }}>
+              Other
+            </option>
+          </select>
+        )}
       </div>
 
+      {/* ROW 1, COLUMN 3: Category (Expense) OR Date (Income) */}
       <div style={groupStyle}>
-        <label htmlFor="date" style={labelStyle}>
-          Date:
-        </label>
-        <input
-          type="date"
-          id="date"
-          name="date"
-          required
-          style={inputStyle}
-          value={formdata.date}
-          onChange={handleChange}
-        />
+        <label style={labelStyle}>{isExpense ? "Category:" : "Date:"}</label>
+        {isExpense ? (
+          <select
+            id="category"
+            name="category"
+            required
+            style={inputStyle}
+            value={formdata.category}
+            onChange={handleChange}
+          >
+            <option value="" style={{ color: "black" }}>
+              -- Select Category --
+            </option>
+            <option value="food" style={{ color: "black" , backgroundColor: "lightgray" }}>
+              Food & Beverage
+            </option>
+            <option value="travel" style={{ color: "black" , backgroundColor: "lightgray" }}>
+              Travel
+            </option>
+            <option value="software" style={{ color: "black" , backgroundColor: "lightgray" }}>
+              Software
+            </option>
+            <option value="supplies" style={{ color: "black" , backgroundColor: "lightgray" }}>
+              Supplies
+            </option>
+            <option value="other" style={{ color: "black" , backgroundColor: "lightgray" }}>
+              Other
+            </option>
+          </select>
+        ) : (
+          <input
+            type="date"
+            id="date"
+            name="date"
+            required
+            style={inputStyle}
+            value={formdata.date}
+            onChange={handleChange}
+          />
+        )}
       </div>
 
-      {/* ROW 2 */}
+      {/* ROW 2, COLUMN 1 & 2: Description (Shared) */}
       <div style={{ ...groupStyle, gridColumn: "1 / span 2" }}>
         <label htmlFor="description" style={labelStyle}>
           Description:
@@ -280,16 +171,13 @@ function Income({
           id="description"
           name="description"
           placeholder="Add details..."
-          style={{
-            ...baseInputStyle,
-            minHeight: "42px",
-            resize: "vertical",
-          }}
+          style={{ ...baseInputStyle, minHeight: "42px", resize: "vertical" }}
           value={formdata.description}
           onChange={handleChange}
         ></textarea>
       </div>
 
+      {/* ROW 2, COLUMN 3: Submit Button (Dynamic Text) */}
       <button
         type="submit"
         className="Button inputCard"
@@ -304,7 +192,7 @@ function Income({
           fontSize: "0.95rem",
         }}
       >
-        Add Income
+        {isExpense ? "Add Expense" : "Add Income"}
       </button>
     </form>
   );
@@ -412,23 +300,15 @@ export default function InputCard({ onAddTransaction }) {
       </div>
 
       <div>
-        {expense ? (
-          <Expense
-            groupStyle={groupStyle}
-            labelStyle={labelStyle}
-            baseInputStyle={baseInputStyle}
-            inputStyle={inputStyle}
-            onSubmitData={onAddTransaction}
-          />
-        ) : (
-          <Income
-            groupStyle={groupStyle}
-            labelStyle={labelStyle}
-            baseInputStyle={baseInputStyle}
-            inputStyle={inputStyle}
-            onSubmitData={onAddTransaction}
-          />
-        )}
+        <TransactionForm
+          key={expense ? "expense" : "income"}
+          isExpense={expense}
+          groupStyle={groupStyle}
+          labelStyle={labelStyle}
+          baseInputStyle={baseInputStyle}
+          inputStyle={inputStyle}
+          onSubmitData={onAddTransaction}
+        />
       </div>
     </div>
   );

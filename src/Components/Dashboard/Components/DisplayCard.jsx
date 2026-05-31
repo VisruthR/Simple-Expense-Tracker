@@ -30,8 +30,11 @@ function Attribute({ data }) {
         <span className="attr-title" style={{ fontWeight: "600" }}>
           {data.purpose || data.source}
         </span>
-        <span className="attr-amount" style={{ fontWeight: "bold" }}>
-          ${data.amount}
+        <span className="attr-amount" style={{
+          fontWeight: "bold",
+          color: isIncome ? "#22c5c2" : "#ef449c",
+        }}>
+          { isIncome ? "+" : "-" }${data.amount}
         </span>
       </div>
 
@@ -81,6 +84,7 @@ export default function DisplayCard( { transactions = [] } ) {
           overflowY: "auto",
           scrollbarWidth: "thin",
           scrollbarColor: "rgba(255, 255, 255, 0.2) transparent",
+          marginTop: "0",
         }}
       >
         {transactions.length === 0 ? (
