@@ -1,4 +1,4 @@
-import React from "react";
+import {useState , useEffect} from "react";
 
 import ChartCard from "./Components/ChartCard";
 import DisplayCard from "./Components/DisplayCard";
@@ -6,7 +6,16 @@ import InputCard from "./Components/InputCard";
 import "./index.css";
 
 export default function Dashboard({ user }) {
-  const [transactions, setTransactions] = React.useState([]);
+  const [transactions, setTransactions] = useState(() => {
+      const saved = localStorage.getItem("transactions");
+      return saved ? JSON.parse(saved) : [];
+    }
+  );
+
+  useEffect(() => { 
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+   }, [transactions] );
+  
 
   const handleTransaction = (newTransaction) => {
     setTransactions((prevTransactions) => [
