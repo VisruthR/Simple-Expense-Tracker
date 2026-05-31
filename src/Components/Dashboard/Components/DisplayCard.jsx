@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import "../index.css";
 
 function Attribute({ data }) {
@@ -61,7 +62,16 @@ function Attribute({ data }) {
   );
 }
 
-export default function DisplayCard( { transactions = [] } ) {
+export default function DisplayCard({ transactions = [] }) {
+  const bottomOfDisplayRef = useRef(null);
+
+  useEffect(() => {
+    if (bottomOfDisplayRef.current) {
+      bottomOfDisplayRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+
+  }, [transactions]);
+
   return (
     <div
       className="card dark"
@@ -94,6 +104,7 @@ export default function DisplayCard( { transactions = [] } ) {
             <Attribute key={transaction.id} data={transaction} />
           ))
         )}
+        <div ref={bottomOfDisplayRef} />
       </div>
     </div>
   );
