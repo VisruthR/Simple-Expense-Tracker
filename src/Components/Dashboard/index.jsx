@@ -32,6 +32,12 @@ export default function Dashboard({ user }) {
     ]);
   };
 
+  const deleteTransaction = (id) => {
+    setTransactions((prevTransactions) =>
+      prevTransactions.filter((transaction) => transaction.id !== id)
+    );
+   }
+
   return (
     <div
       className="dashboard"
@@ -68,7 +74,7 @@ export default function Dashboard({ user }) {
           alignItems: "stretch",
         }}
       >
-        <DisplayCard transactions={transactions} />
+        <DisplayCard transactions={transactions} onDeleteTransaction={deleteTransaction} />
         <ChartCard totalIncome={totalIncome} totalExpense={totalExpense} />
       </div>
       <InputCard onAddTransaction={handleTransaction} />
