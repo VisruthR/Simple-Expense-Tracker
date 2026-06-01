@@ -1,13 +1,25 @@
-# Expense Tracker Dashboard
+# Minimalist Expense Tracker
 
-Welcome to the start of my Expense Tracker project!
+A clean, dark-themed dashboard built with React to help track cash flow. I wanted a straightforward way to log income and expenses without a bloated UI, so I built this focusing on a smooth user experience and a glassmorphic design.
 
-I am building this dashboard to help easily track both income and expenses in one clean interface. This is the very beginning of the project, and I am currently working on the core layout and state management.
+Right now, this is a fully functional **frontend-only** application. It calculates balances dynamically and persists your data using the browser's local storage so you don't lose your entries on refresh.
 
-## Current Progress
+## Features (So far)
 
-- [x] Dashboard UI structure and styling
-- [x] Income/Expense toggle functionality
-- [x] Lifting state up from sibling components (Input to Display)
-- [ ] Connect the Chart component to real data
-- [ ] Add persistent storage so data saves between page reloads
+- **Income & Expense Logging:** Clean toggle interface to add transactions.
+- **Dynamic Charting:** A real-time doughnut chart that visually balances money in vs. money out.
+- **Local Persistence:** Data is automatically saved to `localStorage`.
+- **Clean UI:** CSS featuring a dark, glassmorphic aesthetic.
+
+## Tech Stack
+
+- **React (Vite):** Frontend framework and build tool.
+- **Chart.js / react-chartjs-2:** For the dynamic data visualization.
+- **Pure CSS:** No UI libraries, just custom styling.
+
+## What's Next (WIP)
+
+The core frontend is complete, but I am actively working on turning this into a full-stack application. Upcoming features include:
+
+- [ ] **Authentication:** Adding proper Login/Logout functionality.
+- [ ] **Database Integration:** Moving away from `localStorage` to a real backend (e.g., Firebase, Supabase, or Node/Express) to sync data across devices.
