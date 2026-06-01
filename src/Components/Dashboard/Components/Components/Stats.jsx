@@ -1,5 +1,6 @@
-export default function ChartCard({ totalIncome, totalExpense }) {
+export default function Stats({ totalIncome, totalExpense }) {
   const balance = totalIncome - totalExpense;
+  const isPositive = balance >= 0;
 
   const formatMoney = (amount) => {
     return amount.toLocaleString(undefined, {
@@ -9,24 +10,13 @@ export default function ChartCard({ totalIncome, totalExpense }) {
   };
 
   return (
-    <div
-      className="card dark"
-      style={{
-        width: "30vh",
-        height: "35vh",
-        marginTop: "2rem",
-        borderRadius: "8px",
-        display: "flex",
-        flexDirection: "column",
-        padding: "1.2rem",
-        gap: "1rem",
-        boxSizing: "border-box",
-      }}
-    >
+    <>
       <div
         style={{
           flex: "0 0 30%",
-          backgroundColor: "rgba(255, 255, 255, 0.04)",
+          backgroundColor: isPositive
+            ? "rgba(156, 236, 233, 0.13)"
+            : "rgba(240, 188, 215, 0.13)",
           border: "1px solid rgba(255, 255, 255, 0.05)",
           borderRadius: "8px",
           display: "flex",
@@ -66,7 +56,6 @@ export default function ChartCard({ totalIncome, totalExpense }) {
           gap: "0.8rem",
         }}
       >
-        {/* Income Block */}
         <div
           style={{
             flex: 1,
@@ -98,7 +87,6 @@ export default function ChartCard({ totalIncome, totalExpense }) {
           </span>
         </div>
 
-        {/* Expense Block */}
         <div
           style={{
             flex: 1,
@@ -130,24 +118,6 @@ export default function ChartCard({ totalIncome, totalExpense }) {
           </span>
         </div>
       </div>
-
-      {/* 3. BOTTOM: Future Chart Area */}
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: "rgba(0, 0, 0, 0.15)",
-          border: "1px solid rgba(255, 255, 255, 0.03)",
-          borderRadius: "8px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#475569",
-          fontSize: "0.85rem",
-          boxShadow: "inset 0 4px 15px rgba(0,0,0,0.2)",
-        }}
-      >
-        [ Visual Chart Area ]
-      </div>
-    </div>
+    </>
   );
 }

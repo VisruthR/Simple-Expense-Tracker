@@ -1,6 +1,6 @@
 import {useState , useEffect} from "react";
 
-import ChartCard from "./Components/ChartCard";
+import InfoCard from "./Components/InfoCard";
 import DisplayCard from "./Components/DisplayCard";
 import InputCard from "./Components/InputCard";
 import "./index.css";
@@ -75,7 +75,7 @@ export default function Dashboard({ user }) {
         }}
       >
         <DisplayCard transactions={transactions} onDeleteTransaction={deleteTransaction} />
-        <ChartCard totalIncome={totalIncome} totalExpense={totalExpense} />
+        <InfoCard totalIncome={totalIncome} totalExpense={totalExpense} />
       </div>
       <InputCard onAddTransaction={handleTransaction} />
     </div>
