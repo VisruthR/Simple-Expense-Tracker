@@ -31,3 +31,7 @@ If you want to pull this down and run it on your machine:
    ```bash
    npm install
    ```
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
