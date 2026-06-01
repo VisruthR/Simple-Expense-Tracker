@@ -2,14 +2,14 @@
 
 A clean, dark-themed dashboard built with React to help track cash flow. I wanted a straightforward way to log income and expenses without a bloated UI, so I built this focusing on a smooth user experience and a glassmorphic design.
 
-Right now, this is a fully functional **frontend-only** application. It calculates balances dynamically and persists your data using the browser's local storage so you don't lose your entries on refresh.
+This is a fully functional, **local-first** application. It calculates balances dynamically and persists your data using the browser's local storage so you don't lose your entries on refresh. Because it has no backend database, your financial data is 100% private and never leaves your device.
 
 ## Features (So far)
 
 - **Income & Expense Logging:** Clean toggle interface to add transactions.
 - **Dynamic Charting:** A real-time doughnut chart that visually balances money in vs. money out.
 - **Local Persistence:** Data is automatically saved to `localStorage`.
-- **Clean UI:** CSS featuring a dark, glassmorphic aesthetic.
+- **Clean UI:** Custom CSS featuring a dark, glassmorphic aesthetic.
 
 ## Tech Stack
 
@@ -19,7 +19,15 @@ Right now, this is a fully functional **frontend-only** application. It calculat
 
 ## What's Next (WIP)
 
-The core frontend is complete, but I am actively working on turning this into a full-stack application. Upcoming features include:
+- [ ] **Data Export/Import:** Allowing users to download their transaction history as a JSON/CSV file, and import it back to backup or move their data between devices.
+- [ ] **Edit Functionality:** Allowing users to edit existing transactions instead of just deleting them.
 
-- [ ] **Authentication:** Adding proper Login/Logout functionality.
-- [ ] **Database Integration:** Moving away from `localStorage` to a real backend (e.g., Firebase, Supabase, or Node/Express) to sync data across devices.
+## How to Run Locally
+
+If you want to pull this down and run it on your machine:
+
+1. Clone the repo
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
