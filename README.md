@@ -1,5 +1,7 @@
 # Minimalist Expense Tracker
 
+**[🚀 View Live Demo](https://simple-expense-tracker-kohl.vercel.app/)**
+
 A clean, dark-themed dashboard built with React to help track cash flow. I wanted a straightforward way to log income and expenses without a bloated UI, so I built this focusing on a smooth user experience and a glassmorphic design.
 
 This is a fully functional, **local-first** application. It calculates balances dynamically and persists your data using the browser's local storage so you don't lose your entries on refresh. Because it has no backend database, your financial data is 100% private and never leaves your device.
