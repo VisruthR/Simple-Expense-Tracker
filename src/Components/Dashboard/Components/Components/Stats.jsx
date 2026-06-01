@@ -13,7 +13,7 @@ export default function Stats({ totalIncome, totalExpense }) {
     <>
       <div
         style={{
-          flex: "0 0 30%",
+          flex: "0 0 25%",
           backgroundColor: isPositive
             ? "rgba(156, 236, 233, 0.13)"
             : "rgba(240, 188, 215, 0.13)",
@@ -52,7 +52,7 @@ export default function Stats({ totalIncome, totalExpense }) {
       <div
         style={{
           display: "flex",
-          flex: "0 0 25%",
+          flex: "0 0 20%",
           gap: "0.8rem",
         }}
       >

@@ -1,4 +1,3 @@
-// Make sure these paths match exactly where you put the new files!
 import Stats from "./Components/Stats";
 import Chart from "./Components/Chart";
 
@@ -20,7 +19,7 @@ export default function InfoCard({ totalIncome, totalExpense }) {
     >
       <Stats totalIncome={totalIncome} totalExpense={totalExpense} />
 
-      <Chart />
+      <Chart totalIncome={totalIncome} totalExpense={totalExpense} />
     </div>
   );
 }
