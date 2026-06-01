@@ -109,6 +109,7 @@ export default function DisplayCard({ transactions = [] , onDeleteTransaction })
 
   const handleEdit = () => {
     console.log("Editing:", contextMenu.selectedTransaction);
+    alert("Edit functionality will be implemented soon.");
   };
 
   const handleDelete = () => {
