@@ -1,10 +1,14 @@
 export default function ContextMenu({ x, y, onEdit, onDelete }) {
+  // Ensure the menu doesn't overflow screen bounds on mobile
+  const safeX = x + 120 > window.innerWidth ? window.innerWidth - 130 : x;
+  const safeY = y + 80 > window.innerHeight ? window.innerHeight - 90 : y;
+
   return (
     <div
       style={{
         position: "fixed",
-        top: y,
-        left: x,
+        top: safeY,
+        left: safeX,
         backgroundColor: "#021d35",
         border: "1px solid #334155",
         borderRadius: "10px",

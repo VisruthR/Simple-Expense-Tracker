@@ -66,7 +66,10 @@ function Attribute({ data, onContextMenu }) {
   );
 }
 
-export default function DisplayCard({ transactions = [] , onDeleteTransaction }) {
+export default function DisplayCard({
+  transactions = [],
+  onDeleteTransaction,
+}) {
   const bottomOfDisplayRef = useRef(null);
   const PreveLengthRef = useRef(transactions.length);
 
@@ -120,19 +123,8 @@ export default function DisplayCard({ transactions = [] , onDeleteTransaction })
   };
 
   return (
-    <div
-      className="card dark"
-      style={{
-        width: "64vh",
-        height: "35vh",
-        marginTop: "2rem",
-        borderRadius: "8px",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <h2 style={{ margin: "0.1rem" }}>Screen</h2>
+    <div className="card dark display-card-wrapper">
+      <h2 style={{ margin: "0.5rem", marginTop: "1rem" }}>Screen</h2>
       <div
         style={{
           flex: 1,

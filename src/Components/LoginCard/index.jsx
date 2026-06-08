@@ -25,9 +25,11 @@ export default function LoginCard({ LoginHandler }) {
         padding: "2rem",
         borderRadius: "8px",
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.4)",
-        width: "300px",
+        width: "90%",
+        maxWidth: "300px",
         margin: "10rem auto 2rem auto",
         transition: "opacity 0.5s ease-out",
+        boxSizing: "border-box",
       }}
     >
       <form onSubmit={localSubmitHandler}>

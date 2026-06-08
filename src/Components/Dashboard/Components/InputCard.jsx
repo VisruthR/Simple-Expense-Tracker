@@ -43,15 +43,7 @@ function TransactionForm({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 2fr 1.5fr",
-        gap: "0.8rem",
-        padding: "0.5rem 1rem",
-      }}
-    >
+    <form onSubmit={handleSubmit} className="transaction-form-grid">
       {/* ROW 1, COLUMN 1: Amount (Shared) */}
       <div style={groupStyle}>
         <label htmlFor="amount" style={labelStyle}>
@@ -99,19 +91,34 @@ function TransactionForm({
             <option value="" style={{ color: "black" }}>
               -- Select Source --
             </option>
-            <option value="work" style={{ color: "black", backgroundColor: "lightgray" }}>
+            <option
+              value="work"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Work
             </option>
-            <option value="investment" style={{ color: "black", backgroundColor: "lightgray" }}>
+            <option
+              value="investment"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Investment
             </option>
-            <option value="freelance" style={{ color: "black", backgroundColor: "lightgray" }}>
+            <option
+              value="freelance"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Freelance
             </option>
-            <option value="gifts" style={{ color: "black", backgroundColor: "lightgray" }}>
+            <option
+              value="gifts"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Gift
             </option>
-            <option value="other" style={{ color: "black", backgroundColor: "lightgray" }}>
+            <option
+              value="other"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Other
             </option>
           </select>
@@ -133,19 +140,34 @@ function TransactionForm({
             <option value="" style={{ color: "black" }}>
               -- Select Category --
             </option>
-            <option value="food" style={{ color: "black" , backgroundColor: "lightgray" }}>
+            <option
+              value="food"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Food & Beverage
             </option>
-            <option value="travel" style={{ color: "black" , backgroundColor: "lightgray" }}>
+            <option
+              value="travel"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Travel
             </option>
-            <option value="software" style={{ color: "black" , backgroundColor: "lightgray" }}>
+            <option
+              value="software"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Software
             </option>
-            <option value="supplies" style={{ color: "black" , backgroundColor: "lightgray" }}>
+            <option
+              value="supplies"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Supplies
             </option>
-            <option value="other" style={{ color: "black" , backgroundColor: "lightgray" }}>
+            <option
+              value="other"
+              style={{ color: "black", backgroundColor: "lightgray" }}
+            >
               Other
             </option>
           </select>
@@ -163,7 +185,7 @@ function TransactionForm({
       </div>
 
       {/* ROW 2, COLUMN 1 & 2: Description (Shared) */}
-      <div style={{ ...groupStyle, gridColumn: "1 / span 2" }}>
+      <div style={groupStyle} className="desc-group">
         <label htmlFor="description" style={labelStyle}>
           Description:
         </label>
@@ -178,20 +200,7 @@ function TransactionForm({
       </div>
 
       {/* ROW 2, COLUMN 3: Submit Button (Dynamic Text) */}
-      <button
-        type="submit"
-        className="Button inputCard"
-        style={{
-          gridColumn: "3",
-          alignSelf: "center",
-          height: "50px",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-          fontWeight: "bold",
-          fontSize: "0.95rem",
-        }}
-      >
+      <button type="submit" className="Button inputCard submit-btn">
         {isExpense ? "Add Expense" : "Add Income"}
       </button>
     </form>
@@ -235,18 +244,7 @@ export default function InputCard({ onAddTransaction }) {
   };
 
   return (
-    <div
-      className="card dark"
-      style={{
-        width: "97vh",
-        height: "24vh",
-        marginTop: "2rem",
-        borderRadius: "8px",
-        overflow: "auto",
-        scrollbarWidth: "thin",
-        scrollbarColor: "rgba(255, 255, 255, 0.2) transparent",
-      }}
-    >
+    <div className="card dark input-card-wrapper">
       <div
         style={{
           display: "flex",

@@ -13,7 +13,9 @@ export default function Stats({ totalIncome, totalExpense }) {
     <>
       <div
         style={{
-          flex: "0 0 25%",
+          flex: 1,
+          minHeight: "85px",
+          padding: "1rem",
           backgroundColor: isPositive
             ? "rgba(156, 236, 233, 0.13)"
             : "rgba(240, 188, 215, 0.13)",
@@ -52,13 +54,15 @@ export default function Stats({ totalIncome, totalExpense }) {
       <div
         style={{
           display: "flex",
-          flex: "0 0 20%",
+          flex: 1,
           gap: "0.8rem",
+          minHeight: "85px",
         }}
       >
         <div
           style={{
             flex: 1,
+            padding: "0.5rem",
             backgroundColor: "rgba(34, 197, 194, 0.06)",
             border: "1px solid rgba(34, 197, 194, 0.15)",
             borderRadius: "8px",
@@ -90,6 +94,7 @@ export default function Stats({ totalIncome, totalExpense }) {
         <div
           style={{
             flex: 1,
+            padding: "0.5rem",
             backgroundColor: "rgba(239, 68, 156, 0.06)",
             border: "1px solid rgba(239, 68, 156, 0.15)",
             borderRadius: "8px",

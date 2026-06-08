@@ -7,7 +7,7 @@ export default function Chart({ totalIncome, totalExpense }) {
     <div
       style={{
         flex: 1,
-        height: "25%",
+        minHeight: "150px",
         position: "relative",
         backgroundColor: "rgba(0, 0, 0, 0.15)",
         border: "1px solid rgba(255, 255, 255, 0.03)",
@@ -17,30 +17,30 @@ export default function Chart({ totalIncome, totalExpense }) {
         padding: "1rem",
       }}
     >
-      { totalIncome > 0 || totalExpense > 0 ? (
+      {totalIncome > 0 || totalExpense > 0 ? (
         <Doughnut
           data={{
             labels: ["Income", "Expense"],
             datasets: [
               {
                 label: "Amount",
-              data: [totalIncome, totalExpense],
-              backgroundColor: ["#22c5c2", "#ef449c"],
-              borderWidth: 0,
-              hoverOffset: 4,
+                data: [totalIncome, totalExpense],
+                backgroundColor: ["#22c5c2", "#ef449c"],
+                borderWidth: 0,
+                hoverOffset: 4,
+              },
+            ],
+          }}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              },
             },
-          ],
-        }}
-        options={{
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-        }}
-      />
+          }}
+        />
       ) : (
         <div
           style={{

@@ -8,7 +8,7 @@ function App() {
   const [user, setUser] = useState(() => {
     const savedName = localStorage.getItem("username");
     return savedName ? savedName : "";
-  }); //State for user name
+  });
 
   useEffect(() => {
     localStorage.setItem("username", user);
@@ -16,7 +16,7 @@ function App() {
 
   const LoginHandler = (userName) => {
     const NAME = userName.trim();
-    setUser(NAME); // Update the user state
+    setUser(NAME);
   };
 
   return (
@@ -30,6 +30,7 @@ function App() {
           textAlign: "center",
           fontSize: "1.1rem",
           marginTop: "2rem",
+          padding: "0 1rem",
           lineHeight: "1.6",
           color: "#94A3B8",
         }}
