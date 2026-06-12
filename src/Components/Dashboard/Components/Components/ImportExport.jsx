@@ -1,6 +1,7 @@
 function Import({ handleImport }) {
   return (
     <button
+      className="glass-btn"
       onClick={handleImport}
       style={{
         flex: 1,
@@ -18,12 +19,6 @@ function Import({ handleImport }) {
         backdropFilter: "blur(10px)",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         transition: "all 0.2s ease-in-out",
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
       }}
     >
       <span
@@ -53,6 +48,7 @@ function Import({ handleImport }) {
 function Export({ handleExport }) {
   return (
     <button
+      className="glass-btn"
       onClick={handleExport}
       style={{
         flex: 1,
@@ -70,12 +66,6 @@ function Export({ handleExport }) {
         backdropFilter: "blur(10px)",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         transition: "all 0.2s ease-in-out",
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
       }}
     >
       <span

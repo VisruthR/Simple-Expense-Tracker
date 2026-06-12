@@ -3,7 +3,7 @@ import Chart from "./Components/Chart";
 import ImportExport from "./Components/ImportExport";
 import { useState } from "react";
 
-function Balence({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
+function Balance({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
   const balance = totalIncome - totalExpense;
   const isPositive = balance >= 0;
 
@@ -91,7 +91,7 @@ export default function InfoCard({ totalIncome, totalExpense }) {
 
   return (
     <div className="card dark info-card-wrapper">
-      <Balence
+      <Balance
         totalIncome={totalIncome}
         totalExpense={totalExpense}
         formatMoney={formatMoney}
