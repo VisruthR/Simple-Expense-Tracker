@@ -1,10 +1,93 @@
 import Stats from "./Components/Stats";
 import Chart from "./Components/Chart";
+import ImportExport from "./Components/ImportExport";
+import { useState } from "react";
+
+function Balence({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
+  const balance = totalIncome - totalExpense;
+  const isPositive = balance >= 0;
+
+  return (
+    <>
+      <button
+        style={{
+          flex: 1,
+          minHeight: "85px",
+          padding: "1rem",
+          backgroundColor: isPositive
+            ? "rgba(156, 236, 233, 0.13)"
+            : "rgba(240, 188, 215, 0.13)",
+          border: "1px solid rgba(255, 255, 255, 0.05)",
+          borderRadius: "8px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "inset 0 2px 10px rgba(0,0,0,0.1)",
+          cursor: "pointer",
+          outline: "none",
+          fontFamily: "inherit",
+        }}
+        onClick={handleSwitch}
+      >
+        <span
+          style={{
+            fontSize: "0.8rem",
+            color: "#94a3b8",
+            marginBottom: "0.3rem",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+          }}
+        >
+          Current Balance
+        </span>
+        <span
+          style={{
+            fontSize: "1.7rem",
+            fontWeight: "bold",
+            color: "#f8fafc",
+            letterSpacing: "0.5px",
+          }}
+        >
+          ${formatMoney(balance)}
+        </span>
+      </button>
+    </>
+  );
+}
 
 export default function InfoCard({ totalIncome, totalExpense }) {
+  const [ImEx, setImEx] = useState(false);
+
+  const formatMoney = (amount) => {
+    return amount.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  };
+
+  const handleSwitch = () => {
+    setImEx(!ImEx);
+  };
+
   return (
     <div className="card dark info-card-wrapper">
-      <Stats totalIncome={totalIncome} totalExpense={totalExpense} />
+      <Balence
+        totalIncome={totalIncome}
+        totalExpense={totalExpense}
+        formatMoney={formatMoney}
+        handleSwitch={handleSwitch}
+      />
+      {ImEx ? (
+        <ImportExport />
+      ) : (
+        <Stats
+          totalIncome={totalIncome}
+          totalExpense={totalExpense}
+          formatMoney={formatMoney}
+        />
+      )}
+
       <Chart totalIncome={totalIncome} totalExpense={totalExpense} />
     </div>
   );
