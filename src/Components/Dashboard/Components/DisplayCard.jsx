@@ -50,7 +50,12 @@ function Attribute({ data, onContextMenu }) {
         }}
       >
         <span className="attr-category" style={{ color: "#94a3b8" }}>
-          {data.category || data.date}
+          {data.category ||
+            new Date(data.date + "T00:00:00").toLocaleDateString("en-IN", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}
         </span>
 
         {data.description && (

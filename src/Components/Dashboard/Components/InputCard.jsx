@@ -26,9 +26,12 @@ function TransactionForm({
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const finalDate = formdata.date || new Date().toISOString().split("T")[0];
+
     onSubmitData({
       ...formdata,
       id: crypto.randomUUID(),
+      date: finalDate,
       type: isExpense ? "expense" : "income",
     });
 
@@ -176,7 +179,6 @@ function TransactionForm({
             type="date"
             id="date"
             name="date"
-            required
             style={inputStyle}
             value={formdata.date}
             onChange={handleChange}
