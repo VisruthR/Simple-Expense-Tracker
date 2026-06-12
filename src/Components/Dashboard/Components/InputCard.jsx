@@ -46,7 +46,10 @@ function TransactionForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="transaction-form-grid">
+    <form
+      onSubmit={handleSubmit}
+      className="transaction-form-grid animate-enter"
+    >
       {/* ROW 1, COLUMN 1: Amount (Shared) */}
       <div style={groupStyle}>
         <label htmlFor="amount" style={labelStyle}>

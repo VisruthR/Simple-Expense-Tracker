@@ -1,10 +1,8 @@
 export default function Stats({ totalIncome, totalExpense, formatMoney }) {
-  // const balance = totalIncome - totalExpense;
-  // const isPositive = balance >= 0;
-
   return (
     <>
       <div
+        className="animate-enter"
         style={{
           display: "flex",
           flex: 1,
