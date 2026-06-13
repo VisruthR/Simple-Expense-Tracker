@@ -91,7 +91,25 @@ export default function ImEx() {
   };
 
   const handleExport = () => {
-    alert("Export functionality will be implemented soon.");
+    const dataStr = localStorage.getItem("transactions") || "[]";
+
+    const blob = new Blob([dataStr], { type: "application/json" });
+
+    const url = URL.createObjectURL(blob);
+
+    // 4. Create a temporary link
+    const link = document.createElement("a");
+    link.href = url;
+
+    // 5. Set the default file name for the downloaded file
+    link.download = "my_transactions.json";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // 7. Clean up
+    URL.revokeObjectURL(url);
   };
 
   return (

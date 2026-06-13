@@ -13,6 +13,7 @@ export default function Dashboard({ user }) {
 
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
+    console.log(transactions);
   }, [transactions]);
 
   const totalIncome = transactions
