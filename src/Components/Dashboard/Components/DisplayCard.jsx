@@ -74,6 +74,7 @@ function Attribute({ data, onContextMenu }) {
 export default function DisplayCard({
   transactions = [],
   onDeleteTransaction,
+  onEditStart,
 }) {
   const bottomOfDisplayRef = useRef(null);
   const PreveLengthRef = useRef(transactions.length);
@@ -117,7 +118,9 @@ export default function DisplayCard({
 
   const handleEdit = () => {
     console.log("Editing:", contextMenu.selectedTransaction);
-    alert("Edit functionality will be implemented soon.");
+    onEditStart(contextMenu.selectedTransaction);
+
+    setContextMenu({ ...contextMenu, visible: false });
   };
 
   const handleDelete = () => {

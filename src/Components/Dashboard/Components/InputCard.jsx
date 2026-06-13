@@ -8,14 +8,15 @@ function TransactionForm({
   baseInputStyle,
   inputStyle,
   onSubmitData,
+  editingTransaction,
 }) {
   const [formdata, setformdata] = useState({
-    amount: "",
-    purpose: "",
-    source: "",
-    category: "",
-    date: "",
-    description: "",
+    amount: editingTransaction?.amount || "",
+    purpose: editingTransaction?.purpose || "",
+    source: editingTransaction?.source || "",
+    category: editingTransaction?.category || "",
+    date: editingTransaction?.date || "",
+    description: editingTransaction?.description || "",
   });
 
   const handleChange = (e) => {
@@ -30,7 +31,7 @@ function TransactionForm({
 
     onSubmitData({
       ...formdata,
-      id: crypto.randomUUID(),
+      id: editingTransaction ? editingTransaction.id : crypto.randomUUID(),
       date: finalDate,
       type: isExpense ? "expense" : "income",
     });
@@ -206,14 +207,20 @@ function TransactionForm({
 
       {/* ROW 2, COLUMN 3: Submit Button (Dynamic Text) */}
       <button type="submit" className="Button inputCard submit-btn">
-        {isExpense ? "Add Expense" : "Add Income"}
+        {editingTransaction
+          ? "Update"
+          : isExpense
+            ? "Add Expense"
+            : "Add Income"}
       </button>
     </form>
   );
 }
 
-export default function InputCard({ onAddTransaction }) {
-  const [expense, setExpense] = useState(true);
+export default function InputCard({ onAddTransaction, editingTransaction }) {
+  const [expense, setExpense] = useState(
+    editingTransaction ? editingTransaction.type === "expense" : true,
+  );
 
   const switchCard = () => {
     setExpense(!expense);
@@ -304,13 +311,20 @@ export default function InputCard({ onAddTransaction }) {
 
       <div>
         <TransactionForm
-          key={expense ? "expense" : "income"}
+          key={
+            editingTransaction
+              ? `edit-${editingTransaction.id}`
+              : expense
+                ? "expense"
+                : "income"
+          }
           isExpense={expense}
           groupStyle={groupStyle}
           labelStyle={labelStyle}
           baseInputStyle={baseInputStyle}
           inputStyle={inputStyle}
           onSubmitData={onAddTransaction}
+          editingTransaction={editingTransaction}
         />
       </div>
     </div>

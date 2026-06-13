@@ -6,6 +6,8 @@ import InputCard from "./Components/InputCard";
 import "./index.css";
 
 export default function Dashboard({ user }) {
+  const [editingTransaction, setEditingTransaction] = useState(null);
+
   const [transactions, setTransactions] = useState(() => {
     const saved = localStorage.getItem("transactions");
     return saved ? JSON.parse(saved) : [];
@@ -13,7 +15,6 @@ export default function Dashboard({ user }) {
 
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
-    console.log(transactions);
   }, [transactions]);
 
   const totalIncome = transactions
@@ -37,6 +38,25 @@ export default function Dashboard({ user }) {
     );
   };
 
+  const editTransaction = (updatedTransaction) => {
+    setTransactions((prevTransactions) =>
+      prevTransactions.map((transaction) =>
+        transaction.id === updatedTransaction.id
+          ? updatedTransaction
+          : transaction,
+      ),
+    );
+    setEditingTransaction(null);
+  };
+
+  const handleSubmitTransaction = (transactionData) => {
+    if (editingTransaction) {
+      editTransaction(transactionData);
+    } else {
+      handleTransaction(transactionData);
+    }
+  };
+
   return (
     <div className="dashboard dashboard-container">
       <h2 className="dashboard-header">Welcome, {user}!</h2>
@@ -44,6 +64,7 @@ export default function Dashboard({ user }) {
         <DisplayCard
           transactions={transactions}
           onDeleteTransaction={deleteTransaction}
+          onEditStart={setEditingTransaction}
         />
         <InfoCard
           totalIncome={totalIncome}
@@ -51,7 +72,11 @@ export default function Dashboard({ user }) {
           handleTransaction={handleTransaction}
         />
       </div>
-      <InputCard onAddTransaction={handleTransaction} />
+      <InputCard
+        key={editingTransaction ? editingTransaction.id : "new-transaction"}
+        onAddTransaction={handleSubmitTransaction}
+        editingTransaction={editingTransaction}
+      />
     </div>
   );
 }
