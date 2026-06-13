@@ -45,7 +45,11 @@ export default function Dashboard({ user }) {
           transactions={transactions}
           onDeleteTransaction={deleteTransaction}
         />
-        <InfoCard totalIncome={totalIncome} totalExpense={totalExpense} />
+        <InfoCard
+          totalIncome={totalIncome}
+          totalExpense={totalExpense}
+          handleTransaction={handleTransaction}
+        />
       </div>
       <InputCard onAddTransaction={handleTransaction} />
     </div>

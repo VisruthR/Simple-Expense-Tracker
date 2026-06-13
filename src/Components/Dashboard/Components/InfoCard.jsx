@@ -75,7 +75,11 @@ function Balance({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
   );
 }
 
-export default function InfoCard({ totalIncome, totalExpense }) {
+export default function InfoCard({
+  totalIncome,
+  totalExpense,
+  handleTransaction,
+}) {
   const [ImEx, setImEx] = useState(false);
 
   const formatMoney = (amount) => {
@@ -98,7 +102,7 @@ export default function InfoCard({ totalIncome, totalExpense }) {
         handleSwitch={handleSwitch}
       />
       {ImEx ? (
-        <ImportExport />
+        <ImportExport handleTransaction={handleTransaction} />
       ) : (
         <Stats
           totalIncome={totalIncome}
