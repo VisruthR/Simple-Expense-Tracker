@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
-import ContextMenu from "./Components/ContextMenu";
-import "../index.css";
+import ContextMenu from "../ContextMenu";
+import "../../features/Dashboard/Dashboard.css";
 
 function Attribute({ data, onContextMenu }) {
   const isIncome = data.type === "income";

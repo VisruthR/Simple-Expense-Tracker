@@ -1,6 +1,6 @@
-import Stats from "../Dashboard/Components/Components/Stats";
-import Chart from "../Dashboard/Components/Components/Chart";
-import ImportExport from "../Dashboard/Components/Components/ImportExport";
+import Stats from "../../features/Dashboard/DashboardStats";
+import Chart from "../../features/Dashboard/DashboardChart";
+import ImportExport from "../../features/Dashboard/DashboardExportImport.jsx";
 import { useState } from "react";
 
 function Balance({ totalIncome, totalExpense, formatMoney, handleSwitch }) {

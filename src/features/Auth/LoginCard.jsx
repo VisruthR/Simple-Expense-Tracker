@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./index.css";
+import "../Dashboard/Dashboard.css";
 
 export default function LoginCard({ LoginHandler }) {
   const [name, setName] = useState("");

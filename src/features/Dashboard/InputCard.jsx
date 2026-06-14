@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../index.css";
+import "../../features/Dashboard/Dashboard.css";
 
 function TransactionForm({
   isExpense,

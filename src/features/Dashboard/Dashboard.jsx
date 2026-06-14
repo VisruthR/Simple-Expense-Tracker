@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-import InfoCard from "../Cards/InfoCard";
-import DisplayCard from "./Components/DisplayCard";
-import InputCard from "./Components/InputCard";
-import "./index.css";
+import InfoCard from "../../Components/Cards/InfoCard";
+import DisplayCard from "../../Components/Cards/DisplayCard";
+import InputCard from "./InputCard";
+import "./Dashboard.css";
 
 export default function Dashboard({ user }) {
   const [editingTransaction, setEditingTransaction] = useState(null);
