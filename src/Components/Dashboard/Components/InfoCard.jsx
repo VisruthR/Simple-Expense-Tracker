@@ -10,6 +10,7 @@ function Balance({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
   return (
     <>
       <button
+        className="balance-btn"
         style={{
           flex: 1,
           minHeight: "85px",
@@ -23,7 +24,6 @@ function Balance({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          boxShadow: "inset 0 2px 10px rgba(0,0,0,0.1)",
           cursor: "pointer",
           outline: "none",
           fontFamily: "inherit",

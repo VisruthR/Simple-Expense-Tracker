@@ -147,6 +147,32 @@
 
 .glass-btn:hover {
   background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-btn:active {
+  transform: translateY(1px);
+}
+
+.balance-btn {
+  box-shadow:
+    inset 0 1px 0 var(--card-highlight),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 12px 20px var(--card-shadow);
+}
+
+.balance-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 var(--card-highlight),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 15px 25px var(--card-shadow);
+}
+
+.balance-btn:active {
+  transform: translateY(1px);
 }
 
 /* =========================================
