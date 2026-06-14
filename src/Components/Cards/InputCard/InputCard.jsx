@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../features/Dashboard/Dashboard.css";
+import "./InputCard.css";
 
 function TransactionForm({
   isExpense,
@@ -257,16 +257,7 @@ export default function InputCard({ onAddTransaction, editingTransaction }) {
 
   return (
     <div className="card dark input-card-wrapper">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "1rem",
-          marginBottom: "1rem",
-          marginTop: "1rem",
-        }}
-      >
+      <div className="input-card-header">
         <h2 style={{ margin: 0, color: "#ffffff" }}>
           {expense ? "Expense" : "Income"}
         </h2>
@@ -274,21 +265,7 @@ export default function InputCard({ onAddTransaction, editingTransaction }) {
         <button
           onClick={switchCard}
           title="Switch between Income and Expense"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "38px",
-            height: "38px",
-            padding: "0",
-            backgroundColor: "#38bdf8",
-            color: "#000000",
-            border: "1px solid #475569",
-            borderRadius: "50%",
-            cursor: "pointer",
-            transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-            transform: expense ? "rotate(180deg)" : "rotate(0deg)",
-          }}
+          className="switch-btn"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

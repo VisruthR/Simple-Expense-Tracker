@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Header from "./Components/Header";
-import LoginCard from "./features/Auth/LoginCard";
+import Header from "./Components/Header/Header";
+import LoginCard from "./features/Auth/components/LoginCard";
 import Dashboard from "./features/Dashboard/Dashboard";
+import "./styles/globals.css";
 import "./App.css";
 
 function App() {

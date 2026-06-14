@@ -1,0 +1,24 @@
+.info-card-wrapper {
+  flex: 1 1 35%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.balance-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.balance-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 var(--card-highlight),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 15px 25px var(--card-shadow);
+}
+
+.balance-btn:active {
+  transform: translateY(1px);
+}

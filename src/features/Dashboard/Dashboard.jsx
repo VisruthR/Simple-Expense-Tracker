@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-
-import InfoCard from "../../Components/Cards/InfoCard";
-import DisplayCard from "../../Components/Cards/DisplayCard";
-import InputCard from "../../Components/Cards/InputCard";
+import InfoCard from "../../Components/Cards/InfoCard/InfoCard";
+import DisplayCard from "../../Components/Cards/DisplayCard/DisplayCard";
+import InputCard from "../../Components/Cards/InputCard/InputCard";
 import "./Dashboard.css";
 
 export default function Dashboard({ user }) {

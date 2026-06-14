@@ -2,7 +2,7 @@
 import { Chart as ChartJS } from "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 
-export default function Chart({ totalIncome, totalExpense }) {
+export default function DashboardChart({ totalIncome, totalExpense }) {
   return (
     <div
       style={{

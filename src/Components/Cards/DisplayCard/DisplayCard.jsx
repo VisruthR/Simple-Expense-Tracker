@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from "react";
-import ContextMenu from "../ContextMenu";
+import "../../ContextMenu/ContextMenu.css";
+import "./DisplayCard.css";
+import ContextMenu from "../../ContextMenu/ContextMenu";
 
 function Attribute({ data, onContextMenu }) {
   const isIncome = data.type === "income";
@@ -94,7 +96,6 @@ export default function DisplayCard({
     PreveLengthRef.current = transactions.length;
   }, [transactions]);
 
-  // 2. Global listener to close the menu if you click away
   useEffect(() => {
     const handleClickAway = () => {
       if (contextMenu.visible) {
@@ -116,27 +117,17 @@ export default function DisplayCard({
   };
 
   const handleEdit = () => {
-    console.log("Editing:", contextMenu.selectedTransaction);
     onEditStart(contextMenu.selectedTransaction);
   };
 
   const handleDelete = () => {
-    console.log("Deleting:", contextMenu.selectedTransaction);
     onDeleteTransaction(contextMenu.selectedTransaction.id);
   };
 
   return (
     <div className="card dark display-card-wrapper">
       <h2 style={{ margin: "0.5rem", marginTop: "1rem" }}>Screen</h2>
-      <div
-        style={{
-          flex: 1,
-          overflowY: "auto",
-          scrollbarWidth: "thin",
-          scrollbarColor: "rgba(255, 255, 255, 0.2) transparent",
-          marginTop: "0",
-        }}
-      >
+      <div className="display-card-scroll">
         {transactions.length === 0 ? (
           <p style={{ marginTop: "2rem", opacity: 0.5 }}>
             No transactions yet.

@@ -1,4 +1,8 @@
-export default function Stats({ totalIncome, totalExpense, formatMoney }) {
+export default function DashboardStats({
+  totalIncome,
+  totalExpense,
+  formatMoney,
+}) {
   return (
     <>
       <div

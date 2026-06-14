@@ -13,12 +13,10 @@ function Import({ handleImport }) {
 
     const reader = new FileReader();
 
-    // when the file finishes loading
     reader.onload = (event) => {
       try {
         const parsedData = JSON.parse(event.target.result);
 
-        // Ensure the uploaded file
         if (Array.isArray(parsedData)) {
           handleImport(parsedData);
         } else {
@@ -29,7 +27,6 @@ function Import({ handleImport }) {
         alert("Failed to read the file. Please ensure it is valid JSON.");
       }
 
-      // Clear the input
       e.target.value = null;
     };
 
@@ -132,7 +129,7 @@ function Export({ handleExport }) {
   );
 }
 
-export default function ImEx({ handleTransaction }) {
+export default function DashboardExportImport({ handleTransaction }) {
   const handleImport = (importedData) => {
     importedData.forEach((item) => {
       handleTransaction({
@@ -149,18 +146,14 @@ export default function ImEx({ handleTransaction }) {
 
     const url = URL.createObjectURL(blob);
 
-    // 4. Create a temporary link
     const link = document.createElement("a");
     link.href = url;
-
-    // 5. Set the default file name for the downloaded file
     link.download = "my_transactions.json";
 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    // 7. Clean up
     URL.revokeObjectURL(url);
   };
 

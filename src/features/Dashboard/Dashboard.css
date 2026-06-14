@@ -2,57 +2,6 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-.transaction-attribute {
-  font-size: 0.9em;
-  color: #cbd5e1;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.transaction-attribute:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.02);
-}
-
-.balance-btn {
-  box-shadow:
-    inset 0 1px 0 var(--card-highlight),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 12px 20px var(--card-shadow);
-}
-
-.balance-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 var(--card-highlight),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-    0 15px 25px var(--card-shadow);
-}
-
-.balance-btn:active {
-  transform: translateY(1px);
-}
-
-.glass-btn {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-.glass-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-btn:active {
-  transform: translateY(1px);
-}
-
-/* =========================================
-   RESPONSIVE CLASSES
-   ========================================= */
-
 .dashboard-container {
   background-color: #14203b;
   color: #f8fafc;
@@ -88,14 +37,63 @@
   flex-wrap: wrap;
 }
 
-.display-card-wrapper {
-  flex: 1 1 60%;
-  min-width: 300px;
-  height: 400px;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+/* Glass Buttons */
+.glass-btn {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.glass-btn:active {
+  transform: translateY(1px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-top-row {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+    min-height: auto;
+    margin: 1rem auto;
+  }
+
+  .dashboard-header {
+    font-size: 1.2rem;
+    padding: 0.75rem;
+  }
+
+  .dashboard-top-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .display-card-wrapper,
+  .info-card-wrapper {
+    flex: 1 !important;
+    min-width: unset !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .dashboard-header {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 }
 
 .info-card-wrapper {

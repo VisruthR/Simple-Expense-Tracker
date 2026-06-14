@@ -1,7 +1,8 @@
-import Stats from "../../features/Dashboard/DashboardStats";
-import Chart from "../../features/Dashboard/DashboardChart";
-import ImportExport from "../../features/Dashboard/DashboardExportImport.jsx";
+import Stats from "../../../features/Dashboard/components/DashboardStats";
+import Chart from "../../../features/Dashboard/components/DashboardChart";
+import ImportExport from "../../../features/Dashboard/components/DashboardExportImport";
 import { useState } from "react";
+import "./InfoCard.css";
 
 function Balance({ totalIncome, totalExpense, formatMoney, handleSwitch }) {
   const balance = totalIncome - totalExpense;
