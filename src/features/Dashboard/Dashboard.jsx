@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import InfoCard from "./Components/InfoCard";
+import InfoCard from "../Cards/InfoCard";
 import DisplayCard from "./Components/DisplayCard";
 import InputCard from "./Components/InputCard";
 import "./index.css";
