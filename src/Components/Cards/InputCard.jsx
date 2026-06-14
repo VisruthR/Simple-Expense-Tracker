@@ -206,7 +206,7 @@ function TransactionForm({
       </div>
 
       {/* ROW 2, COLUMN 3: Submit Button (Dynamic Text) */}
-      <button type="submit" className="Button inputCard submit-btn">
+      <button type="submit" className="Button submit-btn">
         {editingTransaction
           ? "Update"
           : isExpense

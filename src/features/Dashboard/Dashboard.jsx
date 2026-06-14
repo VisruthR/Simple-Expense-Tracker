@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import InfoCard from "../../Components/Cards/InfoCard";
 import DisplayCard from "../../Components/Cards/DisplayCard";
-import InputCard from "./InputCard";
+import InputCard from "../../Components/Cards/InputCard";
 import "./Dashboard.css";
 
 export default function Dashboard({ user }) {

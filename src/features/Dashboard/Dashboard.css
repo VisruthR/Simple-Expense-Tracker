@@ -2,14 +2,6 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-.Button.inputCard {
-  transform: translateY(18%);
-}
-
-.Button.inputCard:active {
-  transform: translate(5%, 18%);
-}
-
 .transaction-attribute {
   font-size: 0.9em;
   color: #cbd5e1;
@@ -39,6 +31,21 @@
 }
 
 .balance-btn:active {
+  transform: translateY(1px);
+}
+
+.glass-btn {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.glass-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-btn:active {
   transform: translateY(1px);
 }
 
@@ -124,7 +131,7 @@
 
 .submit-btn {
   grid-column: 3;
-  align-self: center;
+  align-self: end;
   height: 50px;
   border: none;
   border-radius: 6px;
@@ -171,13 +178,5 @@
     grid-column: 1 / -1;
     width: 100%;
     margin-top: 0.5rem;
-  }
-
-  .Button.inputCard {
-    transform: translateY(0);
-  }
-
-  .Button.inputCard:active {
-    transform: translate(0, 5%);
   }
 }
