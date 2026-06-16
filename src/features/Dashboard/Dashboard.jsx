@@ -31,6 +31,16 @@ export default function Dashboard({ user }) {
     ]);
   };
 
+  const ImportTransactions = (importedArray) => {
+    setTransactions((prev) => {
+      const existingIds = new Set(prev.map((t) => t.id));
+      const newTransactions = importedArray.filter(
+        (t) => !existingIds.has(t.id),
+      );
+      return [...prev, ...newTransactions];
+    });
+  };
+
   const deleteTransaction = (id) => {
     setTransactions((prevTransactions) =>
       prevTransactions.filter((transaction) => transaction.id !== id),
@@ -68,7 +78,7 @@ export default function Dashboard({ user }) {
         <InfoCard
           totalIncome={totalIncome}
           totalExpense={totalExpense}
-          handleTransaction={handleTransaction}
+          ImportTransactions={ImportTransactions}
         />
       </div>
       <InputCard

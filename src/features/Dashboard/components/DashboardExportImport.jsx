@@ -129,14 +129,14 @@ function Export({ handleExport }) {
   );
 }
 
-export default function DashboardExportImport({ handleTransaction }) {
+export default function DashboardExportImport({ ImportTransactions }) {
   const handleImport = (importedData) => {
-    importedData.forEach((item) => {
-      handleTransaction({
-        ...item,
-        id: crypto.randomUUID(),
-      });
-    });
+    const sanitizedData = importedData.map((item) => ({
+      ...item,
+      id: item.id || crypto.randomUUID(),
+    }));
+
+    ImportTransactions(sanitizedData);
   };
 
   const handleExport = () => {
